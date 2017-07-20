@@ -1,0 +1,23 @@
+{
+  "name": "kitten-api",
+  "version": "1.0.0",
+  "description": "A purr purr API",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wizelineacademy/NodejsWorkshop.git"
+  },
+  "author": "Alex Ramirez <alex.ramirez@wizeline.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wizelineacademy/NodejsWorkshop/issues"
+  },
+  "homepage": "https://github.com/wizelineacademy/NodejsWorkshop#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "pouchdb": "^6.3.4"
+  }
+}
