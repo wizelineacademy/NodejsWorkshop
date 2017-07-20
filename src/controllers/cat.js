@@ -11,6 +11,25 @@ const findCat = _id => {
     });
 };
 
+const listCats = () => {
+  return model.list()
+    .then(kittens => {
+      console.log(kittens);
+      if(kittens.total_rows > 0) {
+        const kittenList = kittens.rows.map(kitten => {
+          const { doc } = kitten;
+          return `Cat number ${doc._id}: ${doc.name}, color ${doc.color}`;
+        });
+        return kittenList;
+      }
+      return 'No kittens were found. 😿'      
+    })
+    .catch(error => {
+      console.log('listCats error:', error);
+      return 'Something went wrong 😿';
+    });
+}
+
 const createCat = body => {
   const { name, color } = body;
 
@@ -55,6 +74,7 @@ const removeCat = _id => {
 
 module.exports = {
   findCat,
+  listCats,
   createCat,
   updateCat,
   removeCat

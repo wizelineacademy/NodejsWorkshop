@@ -14,6 +14,14 @@ const find = _id => {
     });
 }
 
+const list = () => {
+  return db.allDocs({ include_docs: true })
+    .catch(error => {
+      console.log('Find error:', error);
+      return Promise.reject(error);
+    });
+}
+
 const add = (name, color) => {
   if (!name) {
     return Promise.reject('Name missing 😿');
@@ -67,6 +75,7 @@ const remove = _id => {
 
 module.exports = {
   find,
+  list,
   add,
   update,
   remove

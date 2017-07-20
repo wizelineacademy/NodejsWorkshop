@@ -1,6 +1,16 @@
 const router = require('express').Router();
 const controller = require('../controllers/cat');
 
+router.get('/list', (req, res) => {
+  controller.listCats()
+    .then(kittenList => {
+      res.status(200).send(kittenList);
+    })
+    .catch(error => {
+      res.status(200).send(error);
+    });
+});
+
 router.get('/:_id', (req, res) => {
   const { _id } = req.params;
 
