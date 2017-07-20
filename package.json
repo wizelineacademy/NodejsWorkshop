@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/wizelineacademy/NodejsWorkshop#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "pouchdb": "^6.3.4"
   },
