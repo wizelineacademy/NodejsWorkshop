@@ -10,11 +10,18 @@ const find = _id => {
   return db.get(_id)
     .catch(error => {
       console.log('Find error:', error);
-      return error;
+      return Promise.reject(error);
     });
 }
 
 const add = (name, color) => {
+  if (!name) {
+    return Promise.reject('Name missing 😿');
+  }
+  if (!color) {
+    return Promise.reject('Color missing 😿');
+  }
+
   return db.info()
     .then(info => {
       const _id = info.doc_count;
@@ -23,7 +30,7 @@ const add = (name, color) => {
     })
     .catch(error => {
       console.log('Create error:', error);
-      return error;
+      return Promise.reject(error);
     });
 }
 
@@ -43,7 +50,7 @@ const update = (_id, {name = undefined, color = undefined}) => {
     })
     .catch(error => {
       console.log('Update error:', error);
-      return error;
+      return Promise.reject(error);
     });
 }
 
@@ -54,7 +61,7 @@ const remove = _id => {
     })
     .catch(error => {
       console.log('Delete error:', error);
-      return error;
+      return Promise.reject(error);
     });
 }
 
