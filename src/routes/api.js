@@ -1,19 +1,50 @@
 const router = require('express').Router();
+const controller = require('../controllers/cat');
 
-router.get('/', (req, res) => {
-  res.status(200).send('GET');
+router.get('/:_id', (req, res) => {
+  const { _id } = req.params;
+
+  controller.findCat(_id.toString())
+    .then(kittenInfo => {
+      res.status(200).send(kittenInfo);
+    })
+    .catch(error => {
+      res.status(200).send(error);
+    });
 });
 
 router.post('/', (req, res) => {
-  res.status(201).send('POST');
+  controller.createCat(req.body)
+    .then(kittenInfo => {
+      res.status(201).send(kittenInfo);
+    })
+    .catch(error => {
+      res.status(200).send(error);
+    });
 });
 
-router.put('/', (req, res) => {
-  res.status(200).send('PUT');
+router.put('/:_id', (req, res) => {
+  const { _id } = req.params;
+
+  controller.updateCat(_id, req.body)
+    .then(kittenInfo => {
+      res.status(200).send(kittenInfo);
+    })
+    .catch(error => {
+      res.status(200).send(error);
+    });
 });
 
-router.delete('/', (req, res) => {
-  res.status(200).send('DELETE');
+router.delete('/:_id', (req, res) => {
+  const { _id } = req.params;
+
+  controller.removeCat(_id)
+    .then(kittenInfo => {
+      res.status(200).send(kittenInfo);
+    })
+    .catch(error => {
+      res.status(200).send(error);
+    });
 });
 
 module.exports = router;
