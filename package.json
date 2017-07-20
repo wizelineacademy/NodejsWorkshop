@@ -4,6 +4,8 @@
   "description": "A purr purr API",
   "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
+    "watch": "./node_modules/.bin/nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +21,8 @@
   "dependencies": {
     "express": "^4.15.3",
     "pouchdb": "^6.3.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
