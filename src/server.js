@@ -9,6 +9,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // Parse application/json
 app.use(bodyParser.json())
 
+// If you don't explicitly name the file you want to
+// require, Node will automatically look for the index.js file
+const routes = require('./routes');
+
+app.use('/', routes);
+
 app.get('/', (req, res) => {
   res.send('Welcome to the kitten API! 😺');
 });
